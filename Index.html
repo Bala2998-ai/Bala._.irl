@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-f87f3232-0d80-4259-b498-c789075efb27/styles.css">
+<script src="_ds/modernist-f87f3232-0d80-4259-b498-c789075efb27/_ds_bundle.js"></script>
+<script src="assets.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+  [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].in { opacity: 1; transform: none; }
+  [data-rule] { transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.1s cubic-bezier(.16,.84,.3,1); }
+  [data-rule].in { transform: scaleX(1); }
+  [data-wipe] { clip-path: inset(0 100% 0 0); transition: clip-path 1.15s cubic-bezier(.16,.84,.3,1); }
+  [data-wipe].in { clip-path: inset(0 0 0 0); }
+  [data-chapnum] { opacity: 0; transform: translateY(30px) scale(.86); transform-origin: 0 100%; transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  [data-chapnum].in { opacity: 1; transform: none; }
+  [data-grow] { transform: scaleY(0); transform-origin: 50% 0; transition: transform .9s cubic-bezier(.16,.84,.3,1); }
+  [data-grow].in { transform: scaleY(1); }
+  [data-case-btn] [data-arrowcol] { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  [data-case-btn]:hover [data-arrowcol] { transform: translateX(-6px); }
+  [data-case-btn] [data-casenum] { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  [data-case-btn]:hover [data-casenum] { transform: translateX(5px); }
+  [data-arcrow] [data-arcarrow] { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  [data-arcrow]:hover [data-arcarrow] { transform: translate(4px, -4px); }
+  [data-railkey] { transition: color .3s ease, letter-spacing .3s ease, padding-left .3s cubic-bezier(.2,.7,.2,1); }
+  [data-railkey]:hover { color: var(--color-accent); padding-left: 8px; }
+  [data-chip] { transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s cubic-bezier(.2,.7,.2,1); }
+  [data-chip]:hover { background: var(--color-accent); border-color: var(--color-accent); color: #ffffff; transform: translateY(-2px); }
+  [data-arcrow] { transition: background .3s ease, padding-left .3s cubic-bezier(.2,.7,.2,1); }
+  [data-arcrow]:hover { padding-left: 12px; }
+  [data-navlinks] a { position: relative; }
+  [data-navlinks] a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--color-accent); transform: scaleX(0); transform-origin: 0 50%; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  [data-navlinks] a:hover::after { transform: scaleX(1); }
+  [data-marquee]:hover { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+  @keyframes gridIn { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(40px) } to { opacity: 1; transform: none } }
+  @keyframes wipeIn { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+  @keyframes growIn { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+  @keyframes cueBob { 0%, 100% { transform: translateY(0); opacity: .5 } 50% { transform: translateY(7px); opacity: 1 } }
+  @media (min-width: 901px) { [data-navlinks] { display: flex !important; } [data-originkeys] { display: flex !important; } [data-chapterrail] { display: block !important; } [data-splitgrid] > div:first-child { position: sticky; top: 96px; align-self: start; } }
+  @media (max-width: 900px) {
+    [data-splitgrid], [data-hero-grid] { grid-template-columns: 1fr !important; }
+    [data-photo-wrap] { max-width: 300px; }
+    [data-statstrip] > div { border-right: 0 !important; border-bottom: 1px solid var(--color-divider); padding-left: 0 !important; padding-right: 0 !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal], [data-chapnum] { opacity: 1 !important; transform: none !important; }
+    [data-rule], [data-grow] { transform: none !important; }
+    [data-wipe] { clip-path: none !important; }
+    * { animation: none !important; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f3f2f2"></rect><rect x="18" y="46" width="64" height="4" fill="#ec3013"></rect><text x="18" y="40" font-family="Archivo, sans-serif" font-size="30" font-weight="800" fill="#201e1d">BS</text><text x="18" y="66" font-family="Archivo, sans-serif" font-size="7" font-weight="600" fill="#201e1d">PORTFOLIO</text></svg>
+</template>
+
+<div style="font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); overflow-x: hidden;">
+
+  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 2px solid var(--color-divider);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 12px clamp(20px, 4vw, 56px); display: flex; align-items: center; gap: 28px;">
+      <a href="#top" style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; letter-spacing: -0.01em; text-decoration: none; color: var(--color-text); display: flex; align-items: center; gap: 10px;">
+        <span style="width: 22px; height: 4px; background: var(--color-accent); display: block;"></span>BALA SUBRAMANIAN
+      </a>
+      <div style="flex: 1;"></div>
+      <div style="display: none; gap: 22px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;" data-navlinks="">
+        <a href="#origin" style="text-decoration: none; color: var(--color-text);">Origin</a>
+        <a href="#work" style="text-decoration: none; color: var(--color-text);">Proof</a>
+        <a href="#advantage" style="text-decoration: none; color: var(--color-text);">Method</a>
+        <a href="#stack" style="text-decoration: none; color: var(--color-text);">Toolkit</a>
+        <a href="#writing" style="text-decoration: none; color: var(--color-text);">Archive</a>
+        <a href="#contact" style="text-decoration: none; color: var(--color-text);">Contact</a>
+      </div>
+      <a href="https://linkedin.com/in/bala0101" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration: none; white-space: nowrap; flex: none;">Connect on LinkedIn</a>
+    </div>
+    <div style="height: 3px; background: var(--color-accent); transform-origin: 0 50%; transform: scaleX(0);" data-progress=""></div>
+  </nav>
+
+  <section id="top" style="position: relative; padding: clamp(120px, 14vw, 190px) clamp(20px, 4vw, 56px) 0; max-width: 1440px; margin: 0 auto;">
+    <div data-heroglide="" style="position: absolute; inset: 0; pointer-events: none; opacity: 0; animation: gridIn 1.6s .1s cubic-bezier(.2,.7,.2,1) forwards; background-image: linear-gradient(to right, color-mix(in srgb, var(--color-text) 9%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in srgb, var(--color-text) 9%, transparent) 1px, transparent 1px); background-size: 96px 96px; mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);"></div>
+
+    <div style="position: relative; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: end;" data-hero-grid="">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; opacity: 0; animation: riseIn .8s .15s cubic-bezier(.2,.7,.2,1) forwards;">
+          <span style="width: 34px; height: 3px; background: var(--color-accent); display: block;"></span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">Product Marketing · GTM · AI-Powered Growth</span>
+        </div>
+        <h1 style="font-size: clamp(46px, 7.6vw, 118px); line-height: 0.94; letter-spacing: -0.035em; margin: 20px 0 0; max-width: 15ch; text-wrap: balance;">
+          <span style="display: block; opacity: 0; animation: riseIn .95s .2s cubic-bezier(.2,.7,.2,1) forwards;">Architecting</span>
+          <span style="display: block; opacity: 0; animation: riseIn .95s .32s cubic-bezier(.2,.7,.2,1) forwards;">Growth Through</span>
+          <span style="display: block; opacity: 0; animation: riseIn .95s .44s cubic-bezier(.2,.7,.2,1) forwards;">Narrative <span style="color: var(--color-accent);">&amp;</span> Technology</span>
+        </h1>
+        <div style="height: 3px; background: var(--color-accent); margin: clamp(24px, 3vw, 40px) 0 0; max-width: 100%; animation: wipeIn 1.1s .7s cubic-bezier(.16,.84,.3,1) both;"></div>
+        <p style="font-size: clamp(16px, 1.5vw, 21px); line-height: 1.5; max-width: 46ch; margin: 22px 0 0; opacity: 0; animation: riseIn .9s .8s cubic-bezier(.2,.7,.2,1) forwards;">
+          I turn complex B2B SaaS, FinTech and AI products into positioning that enterprises buy. Nine years across India and Southeast Asia, and a habit of shipping the assets myself instead of waiting on a queue.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 0; opacity: 0; animation: riseIn .9s .95s cubic-bezier(.2,.7,.2,1) forwards;">
+          <a href="#origin" class="btn btn-secondary" style="text-decoration: none;">Start the story</a>
+          <button type="button" class="btn btn-secondary" onClick="{{ openResume }}">Read the résumé</button>
+        </div>
+      </div>
+
+      <figure style="position: relative; opacity: 0; animation: riseIn 1.1s .5s cubic-bezier(.2,.7,.2,1) forwards; margin: 0;" data-photo-wrap="">
+        <div style="border: 2px solid var(--color-text); padding: 8px;">
+          <div class="grayscale" style="overflow: hidden;">
+            <div role="img" aria-label="Bala Subramanian" data-photo="" style="width: 100%; aspect-ratio: 1213 / 1080; background-color: var(--color-neutral-300); background-size: cover; background-position: center top; animation: wipeIn 1.2s .6s cubic-bezier(.16,.84,.3,1) both;"></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div style="position: relative; border-top: 2px solid var(--color-divider); margin-top: clamp(40px, 6vw, 80px); display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));" data-statstrip="" data-stagger="">
+      <div style="padding: 22px 24px 26px 0; border-right: 1px solid var(--color-divider);" data-reveal="">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1; letter-spacing: -0.03em; color: var(--color-accent);"><span data-count="9">9</span></div>
+        <div style="font-size: 12.5px; margin-top: 8px; line-height: 1.35;">Years reading audiences. Three in film, six in marketing</div>
+      </div>
+      <div style="padding: 22px 24px 26px; border-right: 1px solid var(--color-divider);" data-reveal="">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1; letter-spacing: -0.03em; color: var(--color-accent);">$<span data-count="425" data-suffix="K">425K</span></div>
+        <div style="font-size: 12.5px; margin-top: 8px; line-height: 1.35;">Client savings proven against legacy enterprise tech (RM 1.74M)</div>
+      </div>
+      <div style="padding: 22px 24px 26px; border-right: 1px solid var(--color-divider);" data-reveal="">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1; letter-spacing: -0.03em; color: var(--color-accent);">&lt;<span data-count="4">4</span></div>
+        <div style="font-size: 12.5px; margin-top: 8px; line-height: 1.35;">Months from zero to VAPT-certified production</div>
+      </div>
+      <div style="padding: 22px 0 26px 24px;" data-reveal="">
+        <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1; letter-spacing: -0.03em; color: var(--color-accent);"><span data-count="4">4</span></div>
+        <div style="font-size: 12.5px; margin-top: 8px; line-height: 1.35;">White-label SaaS verticals taken to market</div>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px; padding-top: 26px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); animation: cueBob 2.4s 1.4s ease-in-out infinite;">
+      <span style="width: 1px; height: 22px; background: var(--color-accent); display: block;"></span>Scroll
+    </div>
+  </section>
+
+  <section id="origin" style="max-width: 1440px; margin: 0 auto; padding: clamp(70px, 9vw, 130px) clamp(20px, 4vw, 56px) 0; scroll-margin-top: 90px;">
+    <div style="height: 2px; background: var(--color-divider);" data-rule=""></div>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(20px, 4vw, 60px); padding-top: 30px;" data-splitgrid="">
+      <div>
+        <div style="display: flex; align-items: flex-end; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent);" data-chapnum="">01</span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px;" data-reveal="">Origin</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 68%, transparent); max-width: 28ch; margin: 20px 0 0;" data-reveal="">I did not start in product. I started in writers’ rooms, learning why people do what they do. That turned out to be the advantage.</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: var(--color-divider); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Chapter 01 of 08</span>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size: clamp(28px, 3.6vw, 50px); letter-spacing: -0.03em; margin: 0 0 24px; max-width: 24ch;" data-wipe="">It started in a writers’ room, not a marketing team.</h2>
+        <div style="border-top: 2px solid var(--color-divider); padding: 26px 0 34px; display: grid; grid-template-columns: minmax(min(100%, 46ch), 1fr) auto; gap: clamp(24px, 4vw, 56px); align-items: start;" data-stagger="">
+          <p style="font-size: clamp(15px, 1.55vw, 19px); line-height: 1.72; letter-spacing: -0.008em; margin: 0; max-width: 66ch; text-wrap: pretty;" data-reveal="">Assisting on scripts is not a writing job. It is a psychology job. A scene only works if the audience believes a person would truly do that, in that moment, for that reason, so you spend your days interrogating motive. What does this character want? What are they afraid of? What would make them change their mind, and what would make them walk out? That is customer research before anyone calls it customer research. Three years of it taught me to hear the thing underneath what someone says: the objection behind the question, the fear behind the delay, the story a person is already telling themselves before you arrive. Everything since has been the same job at a higher altitude.</p>
+          <div style="display: none; flex-direction: column; gap: 10px; padding-top: 4px;" data-originkeys="" data-reveal="">
+            <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Writers’ room</span>
+            <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(26px, 3vw, 40px); letter-spacing: -0.04em; line-height: .95;">2017<br>2019</span>
+            <span style="font-size: 12.5px; line-height: 1.45; color: color-mix(in srgb, var(--color-text) 68%, transparent); max-width: 16ch;">Three years asking why a person would do that, in that moment.</span>
+            <span style="width: 46px; height: 6px; background: var(--color-accent); display: block; margin-top: 4px;" data-rule=""></span>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 2px;" data-stagger="">
+          <div style="border-top: 8px solid var(--color-neutral-900); padding: 20px 24px 26px; border-right: 1px solid var(--color-divider);; display: flex; flex-direction: column; min-height: 300px;" data-reveal="">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.06em;">2017 / 2019</div>
+            <h3 style="font-size: clamp(22px, 2.2vw, 32px); margin: 6px 0 12px; letter-spacing: -0.025em;">The Observer</h3>
+            <p style="font-size: 13.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Script assistance in the film industry. Three years learning motive, resistance and what makes an audience believe a person.</p>
+
+            <div style="margin-top: auto; padding-top: 22px; display: flex; flex-direction: column; gap: 1px;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Scripts</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Character</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Motive</span>
+            </div>
+          </div>
+          <div style="border-top: 8px solid var(--color-neutral-800); padding: 20px 24px 26px; border-right: 1px solid var(--color-divider);; display: flex; flex-direction: column; min-height: 300px;" data-reveal="">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.06em;">2020 / 2023</div>
+            <h3 style="font-size: clamp(22px, 2.2vw, 32px); margin: 6px 0 12px; letter-spacing: -0.025em;">The Storyteller</h3>
+            <p style="font-size: 13.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Content and institutional communications at Velammal Bodhi Campus and Nspira. The writers’-room instinct, pointed at a real audience: write for the person in the seat, not the brief on the desk.</p>
+
+            <div style="margin-top: auto; padding-top: 22px; display: flex; flex-direction: column; gap: 1px;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Audience</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Clarity</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Voice</span>
+            </div>
+          </div>
+          <div style="border-top: 8px solid var(--color-neutral-600); padding: 20px 24px 26px; border-right: 1px solid var(--color-divider);; display: flex; flex-direction: column; min-height: 300px;" data-reveal="">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.06em;">2023 / 2024</div>
+            <h3 style="font-size: clamp(22px, 2.2vw, 32px); margin: 6px 0 12px; letter-spacing: -0.025em;">The Strategist</h3>
+            <p style="font-size: 13.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">FinTech GTM : 300+ merchant activations, sales collateral, and a CEO’s thought leadership built from nothing. Positioning is character motivation at company scale.</p>
+
+            <div style="margin-top: auto; padding-top: 22px; display: flex; flex-direction: column; gap: 1px;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Positioning</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Enablement</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Pipeline</span>
+            </div>
+          </div>
+          <div style="border-top: 8px solid var(--color-accent); padding: 20px 24px 26px;; display: flex; flex-direction: column; min-height: 300px;" data-reveal="">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.06em; color: var(--color-accent-700);">2024 / PRESENT</div>
+            <h3 style="font-size: clamp(22px, 2.2vw, 32px); margin: 6px 0 12px; letter-spacing: -0.025em;">The Architect</h3>
+            <p style="font-size: 13.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Head of Marketing (Product) at Optimo Tech. Enterprise GTM, government procurement, and product I built myself. Every pitch is a scene: stakes, resistance, turn.</p>
+
+            <div style="margin-top: auto; padding-top: 22px; display: flex; flex-direction: column; gap: 1px;">
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Product</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Procurement</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent); border-top: 1px solid var(--color-divider); padding: 9px 0;" data-railkey="">Proof</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1440px; margin: 0 auto; padding: clamp(70px, 9vw, 130px) clamp(20px, 4vw, 56px) 0;">
+    <div style="height: 2px; background: var(--color-divider);" data-rule=""></div>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(20px, 4vw, 60px); padding-top: 30px;" data-splitgrid="">
+      <div>
+        <div style="display: flex; align-items: flex-end; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent);" data-chapnum="">02</span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px;" data-reveal="">Practice</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 68%, transparent); max-width: 28ch; margin: 20px 0 0;" data-reveal="">Three things I am hired to do, and the order they usually happen in.</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: var(--color-divider); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Chapter 02 of 08</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; background: var(--color-divider);" data-stagger="">
+        <div style="background: var(--color-bg); padding: 0 26px 30px 0;" data-reveal="">
+          <div style="height: 5px; background: var(--color-accent); width: 44px; margin-bottom: 20px;"></div>
+          <h3 style="font-size: clamp(21px, 1.9vw, 27px); margin: 0 0 10px; letter-spacing: -0.02em;">Positioning that closes</h3>
+          <p style="font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Messaging frameworks, value propositions and pricing architecture that make a complex platform legible, and defensible, to an enterprise buying committee.</p>
+        </div>
+        <div style="background: var(--color-bg); padding: 0 26px 30px;" data-reveal="">
+          <div style="height: 5px; background: var(--color-text); width: 44px; margin-bottom: 20px;"></div>
+          <h3 style="font-size: clamp(21px, 1.9vw, 27px); margin: 0 0 10px; letter-spacing: -0.02em;">The AI multiplier</h3>
+          <p style="font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">I build with generative AI and no-code rather than brief it out. Launch assets, internal tools and working product, delivered in weeks instead of quarters.</p>
+        </div>
+        <div style="background: var(--color-bg); padding: 0 0 30px 26px;" data-reveal="">
+          <div style="height: 5px; background: var(--color-accent); width: 44px; margin-bottom: 20px;"></div>
+          <h3 style="font-size: clamp(21px, 1.9vw, 27px); margin: 0 0 10px; letter-spacing: -0.02em;">Translating complexity</h3>
+          <p style="font-size: 14.5px; line-height: 1.55; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">A literature background put to commercial use: technical architecture turned into human narrative that a sales team can carry into a room.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="max-width: 1440px; margin: 0 auto; padding: clamp(70px, 9vw, 130px) clamp(20px, 4vw, 56px) 0; scroll-margin-top: 90px;">
+    <div style="height: 2px; background: var(--color-divider);" data-rule=""></div>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(20px, 4vw, 60px); padding-top: 30px;" data-splitgrid="">
+      <div>
+        <div style="display: flex; align-items: flex-end; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent);" data-chapnum="">03</span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px;" data-reveal="">Proof</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 68%, transparent); max-width: 28ch; margin: 20px 0 0;" data-reveal="">Five problems and what actually moved. Open any one for the full account.</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: var(--color-divider); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Chapter 03 of 08</span>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size: clamp(28px, 3.6vw, 50px); letter-spacing: -0.03em; margin: 0 0 6px; max-width: 22ch;" data-wipe="">The work, and the numbers it produced.</h2>
+        <div style="margin-top: clamp(24px, 3vw, 40px); border-top: 2px solid var(--color-divider);" data-stagger="">
+          <sc-for list="{{ cases }}" as="c" hint-placeholder-count="5">
+            <article style="border-bottom: 2px solid var(--color-divider);" data-reveal="">
+              <button type="button" data-case-btn="" style="width: 100%; text-align: left; background: transparent; border: 0; padding: clamp(22px, 2.6vw, 32px) 0; cursor: pointer; font-family: var(--font-body); color: var(--color-text); display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: clamp(12px, 2vw, 28px); align-items: start;" style-hover="background: color-mix(in srgb, var(--color-text) 4%, transparent)">
+                <span data-casenum="" style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; letter-spacing: 0.06em; color: var(--color-accent); padding-top: 6px;">{{ c.num }}</span>
+                <span style="display: block;">
+                  <span style="display: block; font-family: var(--font-heading); font-weight: 800; font-size: clamp(21px, 2.5vw, 35px); line-height: 1.08; letter-spacing: -0.03em;">{{ c.title }}</span>
+                  <span style="display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">
+                    <span>{{ c.org }}</span><span>{{ c.role }}</span>
+                  </span>
+                </span>
+                <span data-arrowcol="" style="display: flex; align-items: center; gap: 16px;">
+                  <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(19px, 2.1vw, 30px); letter-spacing: -0.03em; white-space: nowrap; color: var(--color-accent);">{{ c.metric }}</span>
+                  <span data-sign="" style="width: 34px; height: 34px; border: 2px solid var(--color-text); display: grid; place-items: center; flex: none; font-size: 18px; line-height: 1; font-weight: 600;">+</span>
+                </span>
+              </button>
+              <div data-panel="" style="max-height: 0px; opacity: 0; overflow: hidden; transition: max-height .55s cubic-bezier(.2,.7,.2,1), opacity .4s ease;">
+                <div data-panel-inner="" style="display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: clamp(12px, 2vw, 28px); padding-bottom: clamp(26px, 3vw, 40px);">
+                  <div></div>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; background: var(--color-divider); border: 2px solid var(--color-divider);">
+                    <div style="background: var(--color-bg); padding: 20px 22px;">
+                      <h6 style="margin: 0 0 10px; font-size: 11px; letter-spacing: 0.12em; color: var(--color-accent-700);">Challenge</h6>
+                      <p style="font-size: 14px; line-height: 1.55; margin: 0;">{{ c.challenge }}</p>
+                    </div>
+                    <div style="background: var(--color-bg); padding: 20px 22px;">
+                      <h6 style="margin: 0 0 10px; font-size: 11px; letter-spacing: 0.12em; color: var(--color-accent-700);">What I did</h6>
+                      <p style="font-size: 14px; line-height: 1.55; margin: 0;">{{ c.action }}</p>
+                    </div>
+                    <div style="background: var(--color-neutral-900); color: var(--color-neutral-100); padding: 20px 22px;">
+                      <h6 style="margin: 0 0 10px; font-size: 11px; letter-spacing: 0.12em; color: var(--color-accent-400);">Result</h6>
+                      <p style="font-size: 14px; line-height: 1.55; margin: 0;">{{ c.result }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="advantage" style="margin-top: clamp(70px, 9vw, 130px); background: var(--color-neutral-900); color: var(--color-neutral-100); scroll-margin-top: 70px;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: clamp(56px, 7vw, 110px) clamp(20px, 4vw, 56px);">
+      <div style="display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 2.15fr); gap: clamp(20px, 4vw, 60px);" data-splitgrid="">
+        <div>
+          <div style="display: flex; align-items: flex-end; gap: 14px;">
+            <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent-400);" data-chapnum="">04</span>
+            <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px; color: var(--color-accent-400);" data-reveal="">Method</span>
+          </div>
+          <h2 style="font-size: clamp(28px, 3.6vw, 50px); letter-spacing: -0.03em; margin: 24px 0 16px; max-width: 18ch;" data-wipe="">Most marketers wait. I build.</h2>
+          <p style="font-size: clamp(15px, 1.6vw, 19px); line-height: 1.4; margin: 0 0 16px; max-width: 30ch; color: var(--color-accent-400); font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.02em;" data-reveal="">And most marketers study competitors. I study motive. A habit from the writers’ room.</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: color-mix(in srgb, var(--color-neutral-100) 30%, transparent); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-neutral-100) 72%, transparent);">Chapter 04 of 08</span>
+        </div>
+          <p style="font-size: 14px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-neutral-100) 68%, transparent); max-width: 34ch;" data-reveal="">The difference is not taste or ambition. It is the length of the gap between deciding something should exist and it existing.</p>
+        </div>
+        <div style="display: grid; gap: 2px;" data-stagger="">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;" data-reveal="">
+            <div style="padding: 12px 0; border-bottom: 2px solid color-mix(in srgb, var(--color-neutral-100) 30%, transparent); color: color-mix(in srgb, var(--color-neutral-100) 60%, transparent);">The traditional marketer</div>
+            <div style="padding: 12px 0 12px 20px; border-bottom: 2px solid var(--color-accent); color: var(--color-accent-400);">The AI-first approach</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px;" data-reveal="">
+            <div style="padding: 22px 20px 22px 0; font-size: 14.5px; line-height: 1.55; color: color-mix(in srgb, var(--color-neutral-100) 55%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--color-neutral-100) 18%, transparent);">Writes the strategy, then waits on engineering and agency queues to build the assets.</div>
+            <div style="padding: 22px 20px; font-size: 14.5px; line-height: 1.55; border-left: 3px solid var(--color-accent); border-bottom: 1px solid color-mix(in srgb, var(--color-neutral-100) 18%, transparent);">Uses AI platforms to personally build, prototype and ship GTM assets, collapsing months of delivery into weeks.</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px;" data-reveal="">
+            <div style="padding: 22px 20px 22px 0; font-size: 14.5px; line-height: 1.55; color: color-mix(in srgb, var(--color-neutral-100) 55%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--color-neutral-100) 18%, transparent);">Heavy reliance on external production budgets and extended timelines.</div>
+            <div style="padding: 22px 20px; font-size: 14.5px; line-height: 1.55; border-left: 3px solid var(--color-accent); border-bottom: 1px solid color-mix(in srgb, var(--color-neutral-100) 18%, transparent);">Integrates HeyGen, Midjourney and Replit to cut outsourcing cost while holding premium quality.</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px;" data-reveal="">
+            <div style="padding: 22px 20px 22px 0; font-size: 14.5px; line-height: 1.55; color: color-mix(in srgb, var(--color-neutral-100) 55%, transparent);">Relays technical specs and feature lists.</div>
+            <div style="padding: 22px 20px; font-size: 14.5px; line-height: 1.55; border-left: 3px solid var(--color-accent);">Translates dry architecture into emotionally resonant, high-converting enterprise narrative.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1440px; margin: 0 auto; padding: clamp(70px, 9vw, 130px) clamp(20px, 4vw, 56px) 0;">
+    <div style="height: 2px; background: var(--color-divider);" data-rule=""></div>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(20px, 4vw, 60px); padding-top: 30px;" data-splitgrid="">
+      <div>
+        <div style="display: flex; align-items: flex-end; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent);" data-chapnum="">05</span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px;" data-reveal="">Conviction</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 68%, transparent); max-width: 28ch; margin: 20px 0 0;" data-reveal="">What nine years and a few launches actually taught me.</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: var(--color-divider); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Chapter 05 of 08</span>
+        </div>
+      </div>
+      <div style="display: grid; gap: 2px;" data-stagger="">
+        <div style="border-top: 1px solid var(--color-divider); padding: 26px 0; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px;" data-reveal="">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 40px; line-height: 0.7; color: var(--color-accent);">“</div>
+          <div>
+            <h3 style="font-size: clamp(19px, 1.9vw, 25px); margin: 0 0 8px; letter-spacing: -0.02em;">AI is a collaborator, not a shortcut.</h3>
+            <p style="font-size: 14.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent); max-width: 60ch;">Genuine, scalable growth happens when deep human strategic empathy is paired with machine execution speed, not when one replaces the other.</p>
+          </div>
+        </div>
+        <div style="border-top: 1px solid var(--color-divider); padding: 26px 0; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px;" data-reveal="">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 40px; line-height: 0.7; color: var(--color-accent);">“</div>
+          <div>
+            <h3 style="font-size: clamp(19px, 1.9vw, 25px); margin: 0 0 8px; letter-spacing: -0.02em;">Positioning is a financial asset.</h3>
+            <p style="font-size: 14.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent); max-width: 60ch;">How a product is framed dictates what an enterprise is willing to pay for it, proven by securing $110K+ (RM 450K+) licensing positions against entrenched competitors.</p>
+          </div>
+        </div>
+        <div style="border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider); padding: 26px 0; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px;" data-reveal="">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 40px; line-height: 0.7; color: var(--color-accent);">“</div>
+          <div>
+            <h3 style="font-size: clamp(19px, 1.9vw, 25px); margin: 0 0 8px; letter-spacing: -0.02em;">Momentum beats perfection.</h3>
+            <p style="font-size: 14.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent); max-width: 60ch;">Getting a secure, working product to market in under four months teaches you more about the customer than a year spent debating in the development lab.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" style="max-width: 1440px; margin: 0 auto; padding: clamp(70px, 9vw, 130px) clamp(20px, 4vw, 56px) 0; scroll-margin-top: 90px;">
+    <div style="height: 2px; background: var(--color-divider);" data-rule=""></div>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(20px, 4vw, 60px); padding-top: 30px;" data-splitgrid="">
+      <div>
+        <div style="display: flex; align-items: flex-end; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent);" data-chapnum="">06</span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px;" data-reveal="">Toolkit</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 68%, transparent); max-width: 28ch; margin: 20px 0 0;" data-reveal="">Strategy is the core. AI is the multiplier. Analytics keeps both honest.</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: var(--color-divider); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Chapter 06 of 08</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; background: var(--color-divider); border: 2px solid var(--color-divider);" data-stagger="">
+        <div style="background: var(--color-bg); padding: 24px;" data-reveal="">
+          <h4 style="margin: 0 0 4px; font-size: 18px; letter-spacing: -0.015em;">GTM &amp; Product Marketing</h4>
+          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 16px;">The core</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Positioning</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Messaging frameworks</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Pricing strategy</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Competitive intelligence</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Sales enablement</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Customer research</span>
+          </div>
+        </div>
+        <div style="background: var(--color-bg); padding: 24px;" data-reveal="">
+          <h4 style="margin: 0 0 4px; font-size: 18px; letter-spacing: -0.015em;">AI &amp; Automation</h4>
+          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 16px;">The multiplier</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">OpenAi</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Claude</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Gemini</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Perplexity</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Replit</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">n8n</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">HeyGen</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Midjourney</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Google Ai Studio</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Hugging Face</span>
+          </div>
+        </div>
+        <div style="background: var(--color-bg); padding: 24px;" data-reveal="">
+          <h4 style="margin: 0 0 4px; font-size: 18px; letter-spacing: -0.015em;">Growth &amp; Analytics</h4>
+          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 16px;">The engine</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">GA4</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Google Ads</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Search Console</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Looker Studio</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">LinkedIn Campaign Manager</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Meta Ads</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Optimizely</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Twilio Segment</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">ZoomInfo</span>
+          </div>
+        </div>
+        <div style="background: var(--color-bg); padding: 24px;" data-reveal="">
+          <h4 style="margin: 0 0 4px; font-size: 18px; letter-spacing: -0.015em;">Craft &amp; Leadership</h4>
+          <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 16px;">The glue</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Figma</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Canva</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">WordPress</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Cross-functional leadership</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Executive communications</span><span class="tag tag-outline" data-chip="" style="white-space: nowrap; height: auto; align-items: center; color: var(--color-text); border-color: var(--color-neutral-300);">Stakeholder management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" style="max-width: 1440px; margin: 0 auto; padding: clamp(70px, 9vw, 130px) clamp(20px, 4vw, 56px) 0; scroll-margin-top: 90px;">
+    <div style="height: 2px; background: var(--color-divider);" data-rule=""></div>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(20px, 4vw, 60px); padding-top: 30px;" data-splitgrid="">
+      <div>
+        <div style="display: flex; align-items: flex-end; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent);" data-chapnum="">07</span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px;" data-reveal="">Archive</span>
+        </div>
+        <p style="font-size: 14px; line-height: 1.55; color: color-mix(in srgb, var(--color-text) 68%, transparent); max-width: 28ch; margin: 20px 0 18px;" data-reveal="">Published thinking and the actual decks behind the work. All readable here, without leaving the page.</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: var(--color-divider); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Chapter 07 of 08</span>
+        </div>
+        <div data-reveal="">
+          <a href="https://linkedin.com/in/bala0101" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration: none;">More on LinkedIn</a>
+        </div>
+      </div>
+      <div style="border-top: 2px solid var(--color-divider);" data-stagger="">
+
+        <a href="https://www.linkedin.com/posts/bala0101_aiworkflows-marketing-activity-7483033540868067328-WA61" data-doc-external="1" target="_blank" rel="noopener" data-arcrow="" style="text-decoration: none; color: var(--color-text); display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--color-divider);" style-hover="background: color-mix(in srgb, var(--color-text) 4%, transparent)" data-reveal="">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 12px; color: var(--color-accent);">01</span>
+          <span>
+            <span style="display: block; font-family: var(--font-heading); font-weight: 800; font-size: clamp(18px, 1.9vw, 25px); letter-spacing: -0.022em; line-height: 1.15;">AI workflows in marketing</span>
+            <span style="display: block; font-size: 12.5px; margin-top: 6px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">LinkedIn post</span>
+          </span>
+          <span data-arcarrow="" style="font-size: 19px; font-weight: 600; color: var(--color-accent);">↗</span>
+        </a>
+        <a href="assets/ctrl-alt-creat-Discovery-Pitch.pdf" data-doc="assets/ctrl-alt-creat-Discovery-Pitch.pdf" data-doc-title="ctrl+alt+creat Discovery Pitch" data-doc-meta="Client pitch deck" target="_blank" rel="noopener" data-arcrow="" style="text-decoration: none; color: var(--color-text); display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--color-divider);" style-hover="background: color-mix(in srgb, var(--color-text) 4%, transparent)" data-reveal="">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 12px; color: var(--color-accent);">02</span>
+          <span>
+            <span style="display: block; font-family: var(--font-heading); font-weight: 800; font-size: clamp(18px, 1.9vw, 25px); letter-spacing: -0.022em; line-height: 1.15;">ctrl+alt+creat Discovery Pitch</span>
+            <span style="display: block; font-size: 12.5px; margin-top: 6px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Client pitch deck · PDF</span>
+          </span>
+          <span data-arcarrow="" style="font-size: 19px; font-weight: 600; color: var(--color-accent);">↗</span>
+        </a>
+        <a href="assets/QIC-360-Business-Growth-Ecosystem.pdf" data-doc="assets/QIC-360-Business-Growth-Ecosystem.pdf" data-doc-title="QIC 360™ The Business Growth Ecosystem" data-doc-meta="Enterprise positioning deck" target="_blank" rel="noopener" data-arcrow="" style="text-decoration: none; color: var(--color-text); display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--color-divider);" style-hover="background: color-mix(in srgb, var(--color-text) 4%, transparent)" data-reveal="">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 12px; color: var(--color-accent);">03</span>
+          <span>
+            <span style="display: block; font-family: var(--font-heading); font-weight: 800; font-size: clamp(18px, 1.9vw, 25px); letter-spacing: -0.022em; line-height: 1.15;">QIC 360™ The Business Growth Ecosystem</span>
+            <span style="display: block; font-size: 12.5px; margin-top: 6px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Enterprise positioning deck · PDF</span>
+          </span>
+          <span data-arcarrow="" style="font-size: 19px; font-weight: 600; color: var(--color-accent);">↗</span>
+        </a>
+        <a href="assets/optimo-deck.html" data-doc="assets/optimo-deck.html" data-doc-title="Optimo Enterprise Sales Deck" data-doc-meta="27 slides · sales enablement" data-doc-download="assets/Optimo-Sales-Deck.pptx" data-doc-file="Optimo-Sales-Deck.pptx" target="_blank" rel="noopener" data-arcrow="" style="text-decoration: none; color: var(--color-text); display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--color-divider);" style-hover="background: color-mix(in srgb, var(--color-text) 4%, transparent)" data-reveal="">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 12px; color: var(--color-accent);">04</span>
+          <span>
+            <span style="display: block; font-family: var(--font-heading); font-weight: 800; font-size: clamp(18px, 1.9vw, 25px); letter-spacing: -0.022em; line-height: 1.15;">Optimo Enterprise Sales Deck</span>
+            <span style="display: block; font-size: 12.5px; margin-top: 6px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Sales enablement · 27 slides</span>
+          </span>
+          <span data-arcarrow="" style="font-size: 19px; font-weight: 600; color: var(--color-accent);">↗</span>
+        </a>
+        <a href="assets/Cybersecurity-in-Trading-Platforms.pdf" data-doc="assets/Cybersecurity-in-Trading-Platforms.pdf" data-doc-title="Cybersecurity in trading platforms" data-doc-meta="Long-form technical narrative" target="_blank" rel="noopener" data-arcrow="" style="text-decoration: none; color: var(--color-text); display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 22px 0; border-bottom: 2px solid var(--color-divider);" style-hover="background: color-mix(in srgb, var(--color-text) 4%, transparent)" data-reveal="">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: 12px; color: var(--color-accent);">05</span>
+          <span>
+            <span style="display: block; font-family: var(--font-heading); font-weight: 800; font-size: clamp(18px, 1.9vw, 25px); letter-spacing: -0.022em; line-height: 1.15;">Cybersecurity in trading platforms</span>
+            <span style="display: block; font-size: 12.5px; margin-top: 6px; color: color-mix(in srgb, var(--color-text) 62%, transparent);">Long-form technical narrative · PDF</span>
+          </span>
+          <span data-arcarrow="" style="font-size: 19px; font-weight: 600; color: var(--color-accent);">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1440px; margin: 0 auto; padding: clamp(70px, 9vw, 130px) clamp(20px, 4vw, 56px) clamp(70px, 9vw, 120px);">
+    <div style="height: 2px; background: var(--color-divider);" data-rule=""></div>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: clamp(20px, 4vw, 60px); padding-top: 30px;" data-splitgrid="">
+      <div>
+        <div style="display: flex; align-items: flex-end; gap: 14px;">
+          <span style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(52px, 7vw, 96px); line-height: .82; letter-spacing: -0.05em; color: var(--color-accent);" data-chapnum="">08</span>
+          <span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 8px;" data-reveal="">Credentials</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px 40px;" data-stagger="">
+        <div data-reveal="">
+          <div style="height: 3px; background: var(--color-text); margin-bottom: 14px;"></div>
+          <h4 style="margin: 0 0 6px; font-size: 17px; letter-spacing: -0.015em;">Education</h4>
+          <p style="font-size: 13.5px; line-height: 1.5; margin: 0; color: color-mix(in srgb, var(--color-text) 72%, transparent);">B.A. English Language &amp; Literature<br>University of Madras</p>
+        <div style="display: none; margin-top: clamp(26px, 4vh, 46px);" data-chapterrail="">
+          <span style="display: block; width: 2px; height: clamp(70px, 11vh, 150px); background: var(--color-divider); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: var(--color-accent); transform-origin: 50% 0;" data-grow=""></span></span>
+          <span style="display: block; margin-top: 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 68%, transparent);">Chapter 08 of 08</span>
+        </div>
+        </div>
+        <div data-reveal="">
+          <div style="height: 3px; background: var(--color-accent); margin-bottom: 14px;"></div>
+          <h4 style="margin: 0 0 6px; font-size: 17px; letter-spacing: -0.015em;">Certifications &amp; AI credentials</h4>
+          <p style="font-size: 13.5px; line-height: 1.5; margin: 0; color: color-mix(in srgb, var(--color-text) 72%, transparent);">Digital Marketing Specialist (DRIM Global)<br>Content Marketing Certification<br>AI Marketing to Grow Your Business<br>ChatGPT 101, Generative AI<br>Building AI &amp; LLM Agents<br>AI Automation with n8n &amp; APIs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="background: var(--color-neutral-900); color: var(--color-neutral-100); overflow: hidden; border-top: 2px solid var(--color-neutral-900);">
+    <div data-marquee="" style="display: flex; width: max-content; animation: marquee 34s linear infinite; font-family: var(--font-heading); font-weight: 800; font-size: clamp(20px, 2.6vw, 34px); letter-spacing: -0.02em; text-transform: uppercase; padding: 18px 0;">
+      <div style="display: flex; align-items: center; gap: 26px; padding-right: 26px;"><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Product marketing<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Go-to-market<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">AI-assisted execution<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Enterprise SaaS<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">FinTech<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Zero to one<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Positioning<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Available for senior PMM roles<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span></div>
+      <div style="display: flex; align-items: center; gap: 26px; padding-right: 26px;" aria-hidden="true"><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Product marketing<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Go-to-market<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">AI-assisted execution<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Enterprise SaaS<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">FinTech<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Zero to one<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Positioning<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span><span style="display: inline-flex; align-items: center; gap: 26px; padding-right: 26px;">Available for senior PMM roles<span style="width: 9px; height: 9px; background: var(--color-accent); display: inline-block;"></span></span></div>
+    </div>
+  </div>
+
+  <section id="contact" style="background: var(--color-accent); color: var(--color-bg); scroll-margin-top: 70px;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: clamp(60px, 8vw, 120px) clamp(20px, 4vw, 56px);">
+      <h6 style="margin: 0 0 20px; font-size: 11.5px; letter-spacing: 0.14em; color: color-mix(in srgb, var(--color-bg) 80%, transparent);" data-reveal="">The next frontier</h6>
+      <h2 style="font-size: clamp(38px, 7vw, 104px); line-height: 0.95; letter-spacing: -0.038em; margin: 0; max-width: 20ch;" data-wipe="">Let's build the next big thing together.</h2>
+      <p style="font-size: clamp(17px, 2.1vw, 28px); line-height: 1.3; letter-spacing: -0.02em; max-width: 30ch; margin: clamp(22px, 3vw, 36px) 0 0; font-family: var(--font-heading); font-weight: 800;" data-reveal="">Nine years, five industries, one habit: ship the thing, then prove it moved the number.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2px; margin-top: clamp(26px, 3.5vw, 44px);" data-stagger="">
+        <div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 55%, transparent); padding: 16px 20px 18px 0;" data-reveal="">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.03em;">$425K</div>
+          <div style="font-size: 13px; line-height: 1.45; margin-top: 6px; color: color-mix(in srgb, var(--color-bg) 88%, transparent);">(RM 1.74M) saved for clients, proven against SAP and Oracle.</div>
+        </div>
+        <div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 55%, transparent); padding: 16px 20px 18px 0;" data-reveal="">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.03em;">&lt;4 months</div>
+          <div style="font-size: 13px; line-height: 1.45; margin-top: 6px; color: color-mix(in srgb, var(--color-bg) 88%, transparent);">from zero to VAPT-certified production. Industry norm: 12 to 18.</div>
+        </div>
+        <div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 55%, transparent); padding: 16px 20px 18px 0;" data-reveal="">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.03em;">10,000+</div>
+          <div style="font-size: 13px; line-height: 1.45; margin-top: 6px; color: color-mix(in srgb, var(--color-bg) 88%, transparent);">pre-launch sign-ups generated with no paid-media budget.</div>
+        </div>
+        <div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 55%, transparent); padding: 16px 20px 18px 0;" data-reveal="">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(22px, 2.4vw, 32px); letter-spacing: -0.03em;">Ready now</div>
+          <div style="font-size: 13px; line-height: 1.45; margin-top: 6px; color: color-mix(in srgb, var(--color-bg) 88%, transparent);">Hiring someone to create a market rather than defend one? Start here.</div>
+        </div>
+      </div>
+      <div style="height: 3px; background: var(--color-bg); margin: clamp(28px, 4vw, 48px) 0 0;" data-rule=""></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(24px, 4vw, 56px); padding-top: 34px;" data-stagger="">
+        <div data-reveal="">
+          <p style="font-size: clamp(15px, 1.5vw, 19px); line-height: 1.5; margin: 0 0 22px; max-width: 34ch;">Whether it is launching a SaaS platform from zero or redefining an established brand's market position, I am ready to architect the next phase of growth.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <a href="https://linkedin.com/in/bala0101" target="_blank" rel="noopener" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background: var(--color-bg); color: var(--color-text); font-family: var(--font-heading); font-weight: 800; font-size: 14px; padding: 12px 18px;" style-hover="background: var(--color-neutral-200)">Connect on LinkedIn →</a>
+            <button type="button" onClick="{{ openResume }}" style="cursor: pointer; background: transparent; color: var(--color-bg); border: 2px solid var(--color-bg); font-family: var(--font-heading); font-weight: 800; font-size: 14px; padding: 12px 18px;" style-hover="background: color-mix(in srgb, #ffffff 16%, transparent)">Read the résumé</button>
+          </div>
+        </div>
+        <div data-reveal="">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 75%, transparent); margin-bottom: 8px;">Email</div>
+          <a href="mailto:viewsofbala.m@gmail.com" style="color: var(--color-bg); font-family: var(--font-heading); font-weight: 800; font-size: clamp(15px, 1.5vw, 20px); letter-spacing: -0.015em; text-decoration: none; border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 45%, transparent);">viewsofbala.m@gmail.com</a>
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 75%, transparent); margin: 26px 0 8px;">Phone</div>
+          <button type="button" onClick="{{ revealPhone }}" style="cursor: pointer; background: transparent; border: 0; padding: 0; color: var(--color-bg); font-family: var(--font-heading); font-weight: 800; font-size: clamp(15px, 1.5vw, 20px); letter-spacing: -0.015em; border-bottom: 2px dashed color-mix(in srgb, var(--color-bg) 45%, transparent); text-align: left;">{{ phoneLabel }}</button>
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 75%, transparent); margin: 26px 0 8px;">Based in</div>
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(15px, 1.5vw, 20px); letter-spacing: -0.015em;">Indian Citizen Currently Working in Malaysia</div>
+        </div>
+        <div data-reveal="">
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 75%, transparent); margin-bottom: 14px;">Open to relocation</div>
+          <div style="display: grid; gap: 2px;">
+            <div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 45%, transparent); padding: 12px 0; font-family: var(--font-heading); font-weight: 800; font-size: 17px;">India</div><div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 45%, transparent); padding: 12px 0; font-family: var(--font-heading); font-weight: 800; font-size: 17px;">UAE / Dubai</div><div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 45%, transparent); padding: 12px 0; font-family: var(--font-heading); font-weight: 800; font-size: 17px;">Europe</div>
+            
+            
+            <div style="border-top: 2px solid color-mix(in srgb, var(--color-bg) 45%, transparent); padding: 12px 0; font-size: 13px; line-height: 1.5; color: color-mix(in srgb, var(--color-bg) 88%, transparent);">Target roles: Senior Product Marketing Manager · GTM Lead · Head of Marketing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: var(--color-neutral-900); color: color-mix(in srgb, var(--color-neutral-100) 60%, transparent);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 26px clamp(20px, 4vw, 56px); display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; font-size: 12px;">
+      <span>© 2026 Bala Subramanian</span>
+      <span>Product Marketing · Go-to-Market · AI-Assisted Execution</span>
+    </div>
+  </footer>
+</div>
+
+
+  <sc-if value="{{ docOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDoc }}" style="position: fixed; inset: 0; z-index: 200; background: color-mix(in srgb, var(--color-text) 78%, transparent); display: flex; align-items: center; justify-content: center; padding: clamp(10px, 3vw, 40px);">
+      <div onClick="{{ stopBubble }}" style="width: min(1180px, 100%); height: 100%; background: var(--color-bg); border: 2px solid var(--color-text); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-bottom: 2px solid var(--color-divider); flex: none;">
+          <span style="width: 22px; height: 4px; background: var(--color-accent); display: block; flex: none;"></span>
+          <span style="min-width: 0;">
+            <span style="display: block; font-family: var(--font-heading); font-weight: 800; font-size: clamp(14px, 1.6vw, 19px); letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ docTitle }}</span>
+            <span style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 60%, transparent); margin-top: 3px;">{{ docMeta }}</span>
+          </span>
+          <span style="flex: 1;"></span>
+          <a href="{{ docLink }}" target="_blank" rel="noopener" style="text-decoration: none; color: var(--color-text); font-family: var(--font-heading); font-weight: 800; font-size: 12px; letter-spacing: 0.02em; padding: 9px 12px; border: 2px solid var(--color-text); white-space: nowrap;" style-hover="background: var(--color-neutral-200)">New tab ↗</a>
+          <sc-if value="{{ docHasDownload }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ docDownload }}" download="{{ docFile }}" style="text-decoration: none; background: var(--color-accent); color: #ffffff; font-family: var(--font-heading); font-weight: 800; font-size: 12px; letter-spacing: 0.02em; padding: 9px 12px; white-space: nowrap;" style-hover="background: var(--color-accent-600)">Download ↓</a>
+          </sc-if>
+          <button type="button" aria-label="Close" onClick="{{ closeDoc }}" style="cursor: pointer; background: transparent; border: 2px solid var(--color-text); color: var(--color-text); font-family: var(--font-heading); font-weight: 800; font-size: 13px; line-height: 1; padding: 9px 12px;" style-hover="background: var(--color-text); color: var(--color-bg)">✕</button>
+        </div>
+        <iframe src="{{ docSrc }}" title="{{ docTitle }}" style="flex: 1; width: 100%; border: 0; background: var(--color-neutral-200);"></iframe>
+      </div>
+    </div>
+  </sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { phone: false };
+
+  caseData() {
+    return [
+      {
+        num: '01',
+        title: 'Beating SAP and Oracle on economics, not features',
+        org: 'Optimo Tech Sdn. Bhd.',
+        role: 'Head of Marketing & BD (Product)',
+        metric: '$425K',
+        challenge: 'Enterprise and government buyers in Southeast Asia default to SAP and Oracle. A white-label workflow platform had to be made not just credible but commercially obvious against them.',
+        action: 'Built GTM playbooks across four verticals (Grant Navigator, HR Lifecycle, Student Lifecycle and YP Portal), plus a five-year total-cost comparison model and an enterprise pricing framework at $110K+ (RM 450K+) one-time licence with an AMC layer.',
+        result: 'A demonstrated 70% cost advantage and USD 425K (RM 1.74M) in direct client savings. Malaysian MySTI certification (#528008) secured, and the platform advanced to active commercial negotiations with MRANTI.'
+      },
+      {
+        num: '02',
+        title: 'Zero to VAPT-certified in under four months',
+        org: 'Optimo Tech · Product Owner',
+        role: 'AI-assisted execution',
+        metric: '<4 months',
+        challenge: 'Build, secure and launch a highly configurable B2B SaaS workflow engine from scratch, with no engineering background and no traditional development runway.',
+        action: 'Conceived, scoped and shipped the product using a stack of AI and no-code platforms, then ran the documentation and stakeholder coordination for security certification myself.',
+        result: 'VAPT-certified production in under four months against a 12 to 18 month industry norm, with a "GOOD" security rating from Condition Zebra and zero vulnerabilities.'
+      },
+      {
+        num: '03',
+        title: 'Ten thousand sign-ups before launch day',
+        org: 'Ctrl Alt Creat · Lively',
+        role: 'Head of Marketing & Strategy',
+        metric: '10,000+',
+        challenge: 'Generate real pre-launch demand for a wellness app with no existing audience and no paid-media war chest.',
+        action: 'Designed and executed a targeted, multi-location experiential pre-launch campaign structured on AIDA (attention, interest, desire, action), feeding a continuous market-capture loop rather than a one-off spike.',
+        result: '10,000+ pre-launch sign-ups generated and initial acquisition targets exceeded 5x.'
+      },
+      {
+        num: '04',
+        title: 'Turning a FinTech product into merchant momentum',
+        org: 'Finforz Technologies · RinggitPay',
+        role: 'PMM Contributor & Brand Strategist',
+        metric: '300+',
+        challenge: 'Win market share for RinggitPay among SME and enterprise merchants in a crowded payments category.',
+        action: 'Built the positioning frameworks and competitive analysis, armed presales with precise pitch decks, demo narratives and client documentation, then engineered CEO thought leadership and executive positioning across FinTech media.',
+        result: '300+ merchant activations secured within six months, with founder-led branding generating direct conversations with enterprise prospects.'
+      },
+      {
+        num: '05',
+        title: 'A repeatable pipeline system, and the tool behind it',
+        org: 'Optimo Tech · Internal',
+        role: 'Systems & enablement',
+        metric: '5 / week',
+        challenge: 'Enterprise demand generation was ad hoc, and competitive research was eating days of the week that should have gone to strategy.',
+        action: 'Standardised pipeline into a repeatable framework: ignite interest, meaningful engagement, position as authority, acquire leads, convert and cultivate, track and thrive, deployed through optimised LinkedIn Sales Navigator SOPs. In parallel, built a lightweight AI market-intelligence tool with Replit, n8n and the GNews API for competitor landscapes, gap analysis and opportunity mapping.',
+        result: 'Five qualified enterprise meetings per week, consistently. The personal research tool was adopted internally as the team\u2019s market-intelligence layer.'
+      }
+    ];
+  }
+
+  componentDidMount() {
+    this.io = new IntersectionObserver((es) => {
+      es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        if (e.target.hasAttribute('data-count')) this._count(e.target);
+        this.io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+    this._observe();
+    this._onScroll = () => {
+      const root = this.el;
+      if (!root) return;
+      const bar = root.querySelector('[data-progress]');
+      if (bar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+      }
+      root.querySelectorAll('[data-wipe]:not(.in), [data-reveal]:not(.in), [data-rule]:not(.in)').forEach((n) => {
+        const r = n.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.92 && r.bottom > 0) n.classList.add('in');
+      });
+      const glide = root.querySelector('[data-heroglide]');
+      if (glide && window.scrollY < 1400) glide.style.transform = 'translateY(' + (window.scrollY * 0.14) + 'px)';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    const ph = this.el && this.el.querySelector('[data-photo]');
+    if (ph && window.BALA_ASSETS) ph.style.backgroundImage = 'url("' + window.BALA_ASSETS.photo + '")';
+    this._wireCases();
+    this._wireDocs();
+    this._onKey = (e) => { if (e.key === 'Escape' && this.state.doc) this.setState({ doc: null }); };
+    window.addEventListener('keydown', this._onKey);
+    this._onResize = () => this._paint();
+    window.addEventListener('resize', this._onResize);
+    setTimeout(() => this._paint(), 400);
+  }
+
+  componentDidUpdate() { this._observe(); this._wireCases(); this._wireDocs(); }
+
+  _wireDocs() {
+    const root = this.el;
+    if (!root || root.dataset.docsWired === '1') return;
+    root.dataset.docsWired = '1';
+    root.addEventListener('click', (e) => {
+      const a = e.target.closest && e.target.closest('[data-doc]');
+      if (!a || !root.contains(a)) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      if (a.hasAttribute('data-doc-external')) return;
+      e.preventDefault();
+      this._open(a.getAttribute('data-doc'), a.getAttribute('data-doc-title') || '', a.getAttribute('data-doc-meta') || 'PDF', a.getAttribute('data-doc-file'), {
+        link: a.getAttribute('data-doc-link') || a.getAttribute('href'),
+        download: a.getAttribute('data-doc-nodownload') ? '' : (a.getAttribute('data-doc-download') || a.getAttribute('data-doc'))
+      });
+    });
+  }
+
+  _blobFor(src) {
+    if (!src || src.indexOf('data:') !== 0) return src;
+    this._blobs = this._blobs || {};
+    if (this._blobs[src]) return this._blobs[src];
+    const [head, b64] = src.split(',');
+    const mime = (head.match(/data:([^;]+)/) || [null, 'application/pdf'])[1];
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const url = URL.createObjectURL(new Blob([bytes], { type: mime }));
+    this._blobs[src] = url;
+    return url;
+  }
+
+  _open(src, title, meta, file, opts) {
+    const o = opts || {};
+    const url = this._blobFor(src);
+    const isPdf = /\.pdf($|[#?])/i.test(src) || url.indexOf('blob:') === 0;
+    document.body.style.overflow = 'hidden';
+    this.setState({ doc: {
+      src: isPdf ? url + '#view=FitH&toolbar=1' : url,
+      title,
+      meta,
+      link: o.link || url,
+      download: o.download === '' ? '' : this._blobFor(o.download || src),
+      file: file || (src.split('/').pop() || 'document.pdf')
+    } });
+  }
+
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+  }
+
+  get el() { return this._root || (this._root = document.querySelector('x-dc') || document.body); }
+
+  _observe() {
+    if (!this.io) return;
+    this.el.querySelectorAll('[data-reveal], [data-rule], [data-wipe], [data-chapnum], [data-grow], [data-count]').forEach((n) => {
+      if (n.dataset.obs === '1') return;
+      n.dataset.obs = '1';
+      const box = n.closest('[data-stagger]');
+      if (box && n.hasAttribute('data-reveal')) {
+        const sibs = [...box.querySelectorAll('[data-reveal]')];
+        const i = sibs.indexOf(n);
+        if (i > 0) n.style.transitionDelay = Math.min(i * 90, 540) + 'ms';
+      }
+      this.io.observe(n);
+    });
+  }
+
+  _wireCases() {
+    const root = this.el;
+    if (!root) return;
+    const arts = [...root.querySelectorAll('article')].filter((a) => a.querySelector('[data-case-btn]'));
+    if (!arts.length) return;
+    this._arts = arts;
+    arts.forEach((art, i) => {
+      const btn = art.querySelector('[data-case-btn]');
+      if (btn.dataset.wired === '1') return;
+      btn.dataset.wired = '1';
+      btn.addEventListener('click', () => this._setOpen(i));
+    });
+    if (this._openIdx === undefined) { this._openIdx = 0; this._paint(); }
+  }
+
+  _setOpen(i) {
+    this._openIdx = this._openIdx === i ? -1 : i;
+    this._paint();
+  }
+
+  _paint() {
+    if (!this._arts) return;
+    this._arts.forEach((art, i) => {
+      const panel = art.querySelector('[data-panel]');
+      const inner = art.querySelector('[data-panel-inner]');
+      const sign = art.querySelector('[data-sign]');
+      const on = i === this._openIdx;
+      if (sign) sign.textContent = on ? '\u2212' : '+';
+      if (!panel || !inner) return;
+      panel.style.maxHeight = on ? inner.scrollHeight + 40 + 'px' : '0px';
+      panel.style.opacity = on ? '1' : '0';
+    });
+  }
+
+  _count(node) {
+    const target = parseFloat(node.getAttribute('data-count'));
+    const dec = node.hasAttribute('data-decimals') ? 2 : 0;
+    const suffix = node.getAttribute('data-suffix') || '';
+    const t0 = performance.now();
+    const dur = 1300;
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      node.textContent = (target * e).toFixed(dec) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  renderVals() {
+    return {
+      cases: this.caseData(),
+      phoneLabel: this.state.phone ? '+91 99402 78073' : 'Click to reveal',
+      revealPhone: () => this.setState({ phone: true }),
+      docOpen: !!this.state.doc,
+      docSrc: this.state.doc ? this.state.doc.src : '',
+      docLink: this.state.doc ? this.state.doc.link : '',
+      docDownload: this.state.doc ? this.state.doc.download : '',
+      docHasDownload: !!(this.state.doc && this.state.doc.download),
+      docTitle: this.state.doc ? this.state.doc.title : '',
+      docMeta: this.state.doc ? this.state.doc.meta : '',
+      docFile: this.state.doc ? this.state.doc.file : 'document.pdf',
+      stopBubble: (e) => e.stopPropagation(),
+      closeDoc: () => { document.body.style.overflow = ''; this.setState({ doc: null }); },
+      openResume: () => this._open(
+        (window.BALA_ASSETS && window.BALA_ASSETS.resume) || '',
+        'Bala Subramanian, Résumé',
+        'Two pages · updated 2026',
+        'Bala_Subramanian_Resume_2026.pdf'
+      ),
+      downloadResume: () => {
+        const a = document.createElement('a');
+        a.href = (window.BALA_ASSETS && window.BALA_ASSETS.resume) || '';
+        a.download = 'Bala_Subramanian_Resume_2026.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
